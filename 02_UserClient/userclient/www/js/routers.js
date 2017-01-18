@@ -13,7 +13,12 @@ angular.module('starter.routers', [])
     templateUrl: 'templates/login.html',
     controller:"loginCtrl"
   })
+  .state('chat', {
+    url: '/chat',
+    templateUrl: 'templates/chat.html',
+    controller:"chatCtrl"
+  })
 
-   $urlRouterProvider.otherwise('/login');
+   $urlRouterProvider.otherwise('/chat');
 })
 
