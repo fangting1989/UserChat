@@ -1,0 +1,80 @@
+@import "_border.scss";
+$col-Red :#D0021B;
+$col-gray:#4A4A4A;
+$col-border:#D8D8D8;
+$col-gray:#9B9B9B;
+body,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+	font-family: 'PingFang SC',Roboto-Regular,'Microsoft YaHei',Helvetica;
+}
+[nav-view-transition="ios"][nav-view-direction="forward"], [nav-view-transition="ios"][nav-view-direction="back"] {
+    background-color: none;
+}
+
+
+.scroll-content {
+   
+     margin-top: 0px; 
+}
+.bar-footer {
+     background-position: 100% 100%; 
+    }
+
+.button.button-assertive{
+	background-color: $col-Red;
+}
+
+%border-right{
+	border: 0;
+	background-position: right top; background-image: -webkit-gradient(linear, left top, right top, color-stop(0.5, transparent), color-stop(0.5, #dedede), to(#dedede));
+	background-repeat: repeat-y; -webkit-background-size: 1px 100%;
+}
+%border-left{
+	border: 0;
+	background-position: left top; background-image: -webkit-gradient(linear, right top, left top, color-stop(0.5, transparent), color-stop(0.5, #dedede), to(#dedede));
+	background-repeat: repeat-y; -webkit-background-size: 1px 100%;
+}
+%border-top{
+	border: 0;
+	background-repeat: repeat-x; -webkit-background-size: 100% 1px;
+	background-position: left top; background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.5, transparent), color-stop(0.5, #dedede), to(#dedede));
+}
+%border{
+	position: relative; border: 0;
+	&:after{
+		content: ""; width: 100%; height: 100%; position: absolute; top: 0; left: 0; background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.5, transparent), color-stop(0.5, #dedede), to(#dedede)), -webkit-gradient(linear, left top, right top, color-stop(0.5, transparent), color-stop(0.5, #dedede), to(#dedede)), -webkit-gradient(linear, left top, left bottom, color-stop(0.5, transparent), color-stop(0.5, #dedede), to(#dedede)), -webkit-gradient(linear, right top, left top, color-stop(0.5, transparent), color-stop(0.5, #dedede), to(#dedede)); -webkit-background-size: 100% 1px, 1px 100%, 100% 1px, 1px 100%; background-size: 100% 1px, 1px 100%, 100% 1px, 1px 100%; -webkit-background-size: 100% 1px, 1px 100%, 100% 1px, 1px 100%; background-size: 100% 1px, 1px 100%, 100% 1px, 1px 100%; background-repeat: no-repeat; background-position: top, right, bottom, left; padding: 1px; -webkit-box-sizing: border-box; z-index: 10; pointer-events: none;
+	}
+}
+%border-bottom{
+	border: 0;
+	background-repeat: repeat-x; -webkit-background-size: 100% 1px;
+	background-position: left bottom; background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, transparent), color-stop(0.5, #dedede), to(#dedede));
+}
+.bg{
+	background: #F7F7F7 !important;
+}
+.card, .list-inset {
+	overflow: visible;
+}
+.tcenter{
+	text-align: center;
+}
+.col-red-i{
+	color:$col-Red !important;
+}
+
+.bg-yellow{
+	background-color: #FCF6AF !important;
+}
+
+
+
+.tabs{
+	.tab-item{
+		.badge.badge-assertive{
+			background-color:$col-Red;
+		}
+	}
+}
+.badge.badge-assertive{
+	background-color:$col-Red;
+}
