@@ -18,6 +18,11 @@ angular.module('starter.routers', [])
     templateUrl: 'templates/chat.html',
     controller:"chatCtrl"
   })
+  .state('test', {
+    url: '/test',
+    templateUrl: 'templates/test.html',
+    controller:"testCtrl"
+  })
 
    $urlRouterProvider.otherwise('/chat');
 })

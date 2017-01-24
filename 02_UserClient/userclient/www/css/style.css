@@ -55,4 +55,35 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   border-color: #7A7A7A;
   background-color: #ccc; }
 
+/**model style*/
+.modal-backdrop-bg {
+  background-color: rgba(0, 0, 0, 0.4); }
+
+.m-pic-preview {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background: transparent; }
+  .m-pic-preview .m-icon {
+    height: 30px;
+    width: 30px;
+    font-size: 36px;
+    position: absolute;
+    right: 0px;
+    top: 0px; }
+  .m-pic-preview .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%; }
+    .m-pic-preview .content div {
+      width: 100%; }
+  .m-pic-preview .prepic {
+    width: 100%;
+    height: auto; }
+
 /*# sourceMappingURL=style.css.map */
