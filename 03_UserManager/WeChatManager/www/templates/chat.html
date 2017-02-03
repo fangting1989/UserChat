@@ -12,9 +12,9 @@
 <div class="bar bar-footer bar-balanced item-input-inset">
   <label class="item-input-wrapper">
     <!-- <i class="icon ion-ios-search placeholder-icon"></i> -->
-    <input type="text" placeholder="输入内容">
+    <input type="text" placeholder="输入内容" ng-model="data.sendchat">
   </label>
-  <button class="button button-clear">
+  <button class="button button-clear" ng-click="SendChatMessage()">
     <i class="icon ion-ios-paperplane-outline"></i>
   </button>
 </div>

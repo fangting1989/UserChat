@@ -5,10 +5,10 @@ angular.module('starter.controllers', [])
 
   	angular.extend($scope, {
   		BindData:function(){
-  			$scope.UserList = [{index:1,name:'张三',mobile:'18657181338'}
-  			,{index:1,name:'李四',mobile:'18657180001'}
-  			,{index:1,name:'王五',mobile:'18657180002'}
-  			,{index:1,name:'赵六',mobile:'18657180003'}
+  			$scope.UserList = [{index:1,name:'张三',mobile:'18657181338',guid:'chat-f7e8e628-0880-42de-8678-1c2ab06615ad'}
+  			,{index:1,name:'李四',mobile:'18657180001',guid:'chat-7a3310d5-c1e4-40cf-8502-8d0e94103cfd'}
+  			,{index:1,name:'王五',mobile:'18657180002',guid:'chat-b3c6c416-2457-4fae-82ac-978b59f73e84'}
+  			,{index:1,name:'赵六',mobile:'18657180003',guid:'chat-54b29dee-dd54-4c21-adc6-5e8b14e47d84'}
   			]
   		},
   		ItemClick:function(item){
@@ -18,10 +18,19 @@ angular.module('starter.controllers', [])
 
   	$scope.BindData()
 })
-.controller('chatCtrl', function($scope,deepstreamservice,$stateParams) {
+.controller('chatCtrl', function($scope,deepstreamservice,$stateParams,CommonServices,uuid2,chatservice) {
 	$scope.TitleName = $stateParams.obj.mobile
+  console.log($stateParams.obj.guid)
+  $scope.data = {}
 	angular.extend($scope, {
-
+    SendChatMessage:function(){
+      console.log(uuid2.newuuid())
+      if($scope.data.sendchat == '' || $scope.data.sendchat == null || typeof $scope.data.sendchat == 'undefined'){
+        CommonServices.toasterInfo("对不起，输入的内容不能为空",'error')
+        return
+      }
+      chatservice.Init($stateParams.obj.guid)
+    }
 	})
 })
 

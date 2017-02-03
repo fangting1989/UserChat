@@ -54,18 +54,18 @@ angular.module('starter.services', [])
     var deferred = $q.defer()
     return{
       Init:function(chatname){
-        deepstreamservice.init().then(function (ds) {
+        return deepstreamservice.init().then(function (ds) {
           if (ds) {
-            var systemR = ds.record.getRecord("wechat");
+            var systemR = ds.record.getRecord(chatname);
             systemR.whenReady(function () {
               //console.log('system ready');
               systemR.subscribe(function (info) {
-                console.log("data--subscribe")
-                if (info) {
-                  localStorageService.set('storeInfo', info);
-                  angular.extend(serviceConfig, info);
-                  localStorageService.set('serviceConfig', serviceConfig);
-                }
+                console.log(info)
+                // if (info) {
+                //   localStorage.set('storeInfo', info);
+                //   angular.extend(serviceConfig, info);
+                //   localStorage.set('serviceConfig', serviceConfig);
+                // }
               }, true);
               deferred.resolve();
             });
