@@ -1,3 +1,4 @@
+@import "_border.scss";
 $styleRed :#D0021B;
 $bordercolor:#D8D8D8;
 body,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
@@ -129,5 +130,94 @@ body,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
 	.prepic{
 		width:100%;
 		height:auto;
+	}
+}
+
+.chatpage{
+
+	background: #f7f7f7;
+	.scroll{
+		//transition: transform 0.2s ease;
+	}
+	.list{
+		.item{
+			background: #f7f7f7;
+			border:none;
+			.userhd{
+				display: inline-block;
+				height: auto;
+    			width: 12%;
+    			padding: 3px;
+			}
+			.chat-con{
+				padding-top: 3px;
+				display: inline-block;
+				vertical-align: top;
+    			width: 88%;
+    			position: relative;
+    			white-space:normal;
+    			.content{
+    				display: inline-block;
+    				line-height: 30px;
+					background: #3cb044;
+					padding: 0px 10px;
+	    			border-radius: 5px;
+	    			white-space: normal;
+	    			width:auto;
+	    			display: inline-block;
+	    			max-width: 100%;
+	    			text-align: left;
+    			}
+    			.arrow{
+    				display:block;
+    				 width:0; height:0; 
+    				 position:absolute; 
+    				 left: -10px;
+    				top: 10px;
+    				 border-left:5px solid transparent; 
+    				 border-right:5px solid #3cb044;
+    				 border-top:5px solid transparent; 
+    				border-bottom:5px solid transparent;
+
+    			}
+			}
+		}
+		.ichat{
+			.chat-con{
+				text-align: right;
+				white-space:normal;
+				.content{
+					@include pixelborder(all,#dcdcdc,5px);
+					background: #fff;
+					max-width: 100%;
+				}
+				.arrow{
+					left: auto;
+					right:-10px;
+    				top: 10px;
+					 border-left:5px solid #dcdcdc; 
+    				 border-right:5px solid transparent;
+    				 &:after{
+    				 	content:"";
+    					display:block;
+	    				 width:0; height:0; 
+	    				 position:absolute; 
+	    				 left: -6px;
+    					top: -5px;
+	    				 border-left:5px solid #fff; 
+	    				 border-right:5px solid transparent;
+	    				 border-top:5px solid transparent; 
+	    				border-bottom:5px solid transparent;
+	    				z-index:10;
+    				}
+				}
+			}
+		}
+	}
+
+}
+.item-input-inset{
+	.selfile{
+		margin: 0px 10px 0px 0px;
 	}
 }

@@ -22,6 +22,11 @@ angular.module('starter.controllers', [])
 	$scope.TitleName = $stateParams.obj.mobile
   console.log($stateParams.obj.guid)
   $scope.data = {}
+
+  $scope.chatarray = []
+  var chatData = {fromPerson:"1",chatType:'1',msg:'1231313131331331331'}
+  $scope.chatarray.push(chatData)
+
 	angular.extend($scope, {
     SendChatMessage:function(){
       console.log(uuid2.newuuid())
@@ -30,6 +35,7 @@ angular.module('starter.controllers', [])
         return
       }
       chatservice.Init($stateParams.obj.guid)
+      $scope.chatarray.push({fromPerson:"1",chatType:'1',msg:$scope.data.sendchat})
     }
 	})
 })

@@ -5,16 +5,102 @@
 
   <h1 class="title">{{TitleName}}</h1>
 </ion-header-bar>
-<ion-content class="has-header has-footer">
-	
-</ion-content>
+<ion-content class="has-header has-footer chatpage" style="">
+	<ul class="list">
+    <!-- <li class="item">
+      <img src="img/chat.jpg" class="userhd">
+      <div class="chat-con">
+      <div class="arrow"></div>
+        <span class="content">测试内容</span>
+      </div>
+    </li>
+    <li class="item ichat">
+      <div class="chat-con">
+       <div class="arrow"></div>
+        <span class="content">测试</span>
+      </div>
+      <img src="img/chat.jpg" class="userhd">
+    </li> -->
+    <li class="item ichat" ng-repeat="item in chatarray">
+      <div class="chat-con" ng-if="item.fromPerson == 1">
+       <div class="arrow"></div>
+        <span class="content">{{item.msg}}</span>
+      </div>
+      <img src="img/chat.jpg" class="userhd" ng-if="item.fromPerson == 1">
 
+      <div class="chat-con" ng-if="item.fromPerson != 1">
+       <div class="arrow"></div>
+        <span class="content">{{item.msg}}</span>
+      </div>
+      <img src="img/chat.jpg" class="userhd" ng-if="item.fromPerson != 1">
+    </li>
+    <!-- <li class="item ichat">
+      <div class="chat-con">
+       <div class="arrow"></div>
+        <span class="content">测试</span>
+      </div>
+      <img src="img/chat.jpg" class="userhd">
+    </li>
+    <li class="item ichat">
+      <div class="chat-con">
+       <div class="arrow"></div>
+        <span class="content">测试</span>
+      </div>
+      <img src="img/chat.jpg" class="userhd">
+    </li>
+    <li class="item ichat">
+      <div class="chat-con">
+       <div class="arrow"></div>
+        <span class="content">测试</span>
+      </div>
+      <img src="img/chat.jpg" class="userhd">
+    </li>
+    <li class="item ichat">
+      <div class="chat-con">
+       <div class="arrow"></div>
+        <span class="content">测试</span>
+      </div>
+      <img src="img/chat.jpg" class="userhd">
+    </li>
+    <li class="item ichat">
+      <div class="chat-con">
+       <div class="arrow"></div>
+        <span class="content">测试</span>
+      </div>
+      <img src="img/chat.jpg" class="userhd">
+    </li>
+    <li class="item ichat">
+      <div class="chat-con">
+       <div class="arrow"></div>
+        <span class="content">测试</span>
+      </div>
+      <img src="img/chat.jpg" class="userhd">
+    </li>
+    <li class="item ichat">
+      <div class="chat-con">
+       <div class="arrow"></div>
+        <span class="content">测试</span>
+      </div>
+      <img src="img/chat.jpg" class="userhd">
+    </li>
+    <li class="item ichat">
+      <div class="chat-con">
+       <div class="arrow"></div>
+        <span class="content">测试</span>
+      </div>
+      <img src="img/chat.jpg" class="userhd">
+    </li> -->
+  </ul>
+</ion-content>
+ <!--  -->
 <div class="bar bar-footer bar-positive item-input-inset">
+   <span class="selfile"  ng-model="files" multiple="multiple" ngf-pattern="'image/*'" ngf-select="uploadFiles($files)">
+    <i class="icon ion-plus-round"></i>
+  </span>
   <label class="item-input-wrapper">
-    <!-- <i class="icon ion-ios-search placeholder-icon"></i> -->
-    <input type="text" placeholder="输入内容">
+    <input type="text" placeholder="输入内容" ng-model="data.sendchat">
   </label>
-  <button class="button button-clear">
+  <button class="button button-clear" ng-click="SendContent()">
     <i class="icon ion-ios-paperplane-outline"></i>
   </button>
 </div>

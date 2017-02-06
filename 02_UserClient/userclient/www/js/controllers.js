@@ -3,13 +3,52 @@ angular.module('starter.controllers', [])
 .controller('loginCtrl', function($scope,deepstreamservice) {
   	$scope.TitleName = "123"
 })
-.controller('chatCtrl', function($scope,deepstreamservice,$stateParams) {
+.controller('chatCtrl', function($scope,deepstreamservice,$stateParams,$ionicScrollDelegate,Upload,CommonServices) {
 	$scope.TitleName = "联系方式"
+  $scope.data={}
+  $scope.chatarray = []
+    angular.extend($scope,{
+        SendContent:function(){
+            $ionicScrollDelegate.scrollBottom(true);
+            if($scope.data.sendchat == '' || $scope.data.sendchat == null || typeof $scope.data.sendchat == 'undefined'){
+              CommonServices.toasterInfo("对不起，输入的内容不能为空",'error')
+              return
+            }
+            $scope.chatarray.push({fromPerson:"1",chatType:'1',msg:$scope.data.sendchat})
+            $scope.data.sendchat = ''
+        },
+        uploadFiles:function($files){
+            CommonServices.toasterInfo("file uplad ...",'success')
+
+      //       if (files && files.length) {
+      //   for (var i = 0; i < files.length; i++) {
+      //     Upload.upload({..., data: {file: files[i]}, ...})...;
+      //   }
+      //   // or send them all together for HTML5 browsers:
+      //   Upload.upload({..., data: {file: files}, ...})...;
+      // }
+
+
+       // Upload.upload({
+       //      url: 'upload/url',
+       //      data: {file: file, 'username': $scope.username}
+       //  }).then(function (resp) {
+       //      console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+       //  }, function (resp) {
+       //      console.log('Error status: ' + resp.status);
+       //  }, function (evt) {
+       //      var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+       //      console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+       //  });
+        
+            if ($scope.form.file.$valid && $scope.file) {
+                $scope.upload($scope.file);
+            }
+
+        }
+    })
 })
 .controller('testCtrl', function($scope,deepstreamservice,$stateParams,$ionicModal) {
-
-
-
 	$scope.reader = new FileReader();   //创建一个FileReader接口
     $scope.form = {     //用于绑定提交内容，图片或其他数据
         image:{},
