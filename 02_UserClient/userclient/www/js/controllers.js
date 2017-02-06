@@ -3,7 +3,7 @@ angular.module('starter.controllers', [])
 .controller('loginCtrl', function($scope,deepstreamservice) {
   	$scope.TitleName = "123"
 })
-.controller('chatCtrl', function($scope,deepstreamservice,$stateParams,$ionicScrollDelegate,Upload,CommonServices) {
+.controller('chatCtrl', function($scope,chatservice,$stateParams,$ionicScrollDelegate,Upload,CommonServices) {
 	$scope.TitleName = "联系方式"
   $scope.data={}
   $scope.chatarray = []
@@ -16,6 +16,7 @@ angular.module('starter.controllers', [])
             }
             $scope.chatarray.push({fromPerson:"1",chatType:'1',msg:$scope.data.sendchat})
             $scope.data.sendchat = ''
+            chatservice.Init("abc",$scope.data.sendchat)
         },
         uploadFiles:function($files){
             CommonServices.toasterInfo("file uplad ...",'success')

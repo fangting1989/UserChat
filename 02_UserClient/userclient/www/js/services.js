@@ -18,10 +18,8 @@ angular.module('starter.services', [])
         }
       });
       ds.on('connectionStateChanged', function (connectionState) {
-        console.log("FTFT--1")
         var connection = ds._connection;
         if (connectionState === 'RECONNECTING' && (connection._reconnectionAttempt >= connection._options.maxReconnectAttempts - 1)) {
-          console.log("FTFT--2")
           connection._reconnectionAttempt = 0;
         }
       });
@@ -33,7 +31,6 @@ angular.module('starter.services', [])
     }
 
     function init(cb) {
-      console.log("FTFT")
       if (initedflag) {
         return $q.when(ds);
       } else {
@@ -53,20 +50,24 @@ angular.module('starter.services', [])
 .service('chatservice',function(deepstreamservice,$q){
     var deferred = $q.defer()
     return{
-      Init:function(chatname){
+      Init:function(chatname,chatdata){
         deepstreamservice.init().then(function (ds) {
           if (ds) {
             var systemR = ds.record.getRecord("wechat");
             systemR.whenReady(function () {
               //console.log('system ready');
-              systemR.subscribe(function (info) {
-                console.log("data--subscribe")
-                if (info) {
-                  localStorageService.set('storeInfo', info);
-                  angular.extend(serviceConfig, info);
-                  localStorageService.set('serviceConfig', serviceConfig);
-                }
-              }, true);
+              // systemR.subscribe(function (info) {
+
+              //   record.set( "position.x", location.getLongitude() )
+
+              //   console.log("data--subscribe")
+              //   // if (info) {
+              //   //   localStorageService.set('storeInfo', info);
+              //   //   angular.extend(serviceConfig, info);
+              //   //   localStorageService.set('serviceConfig', serviceConfig);
+              //   // }
+              // }, true);
+              systemR.set( "firstname", chatdata)
               deferred.resolve();
             });
           } else {

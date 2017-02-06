@@ -33,7 +33,6 @@ angular.module('starter.services', [])
     }
 
     function init(cb) {
-      console.log("FTFT")
       if (initedflag) {
         return $q.when(ds);
       } else {
@@ -56,18 +55,20 @@ angular.module('starter.services', [])
       Init:function(chatname){
         return deepstreamservice.init().then(function (ds) {
           if (ds) {
-            var systemR = ds.record.getRecord(chatname);
+            var systemR = ds.record.getRecord("wechat");
             systemR.whenReady(function () {
               //console.log('system ready');
-              systemR.subscribe(function (info) {
+              var infodata = null;
+              systemR.subscribe('firstname',function (info) {
                 console.log(info)
+                infodata = info
                 // if (info) {
                 //   localStorage.set('storeInfo', info);
                 //   angular.extend(serviceConfig, info);
                 //   localStorage.set('serviceConfig', serviceConfig);
                 // }
               }, true);
-              deferred.resolve();
+              deferred.resolve(infodata);
             });
           } else {
             deferred.reject();

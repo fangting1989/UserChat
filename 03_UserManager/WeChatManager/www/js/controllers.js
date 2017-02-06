@@ -34,7 +34,9 @@ angular.module('starter.controllers', [])
         CommonServices.toasterInfo("对不起，输入的内容不能为空",'error')
         return
       }
-      chatservice.Init($stateParams.obj.guid)
+      chatservice.Init($stateParams.obj.guid).then(function(data){
+        $scope.chatarray.push({fromPerson:"1",chatType:'1',msg:data})
+      })
       $scope.chatarray.push({fromPerson:"1",chatType:'1',msg:$scope.data.sendchat})
     }
 	})
