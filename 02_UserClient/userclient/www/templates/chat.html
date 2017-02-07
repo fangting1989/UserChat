@@ -21,75 +21,14 @@
       </div>
       <img src="img/chat.jpg" class="userhd">
     </li> -->
-    <li class="item ichat" ng-repeat="item in chatarray">
-      <div class="chat-con" ng-if="item.fromPerson == 1">
+    <li class="item " ng-class="{'ichat':(item.fromPerson == 1)}" ng-repeat="item in chatarray">
+      <img src="img/chat.jpg" class="userhd" ng-if="item.fromPerson != 1">
+      <div class="chat-con">
        <div class="arrow"></div>
         <span class="content">{{item.msg}}</span>
       </div>
       <img src="img/chat.jpg" class="userhd" ng-if="item.fromPerson == 1">
-
-      <div class="chat-con" ng-if="item.fromPerson != 1">
-       <div class="arrow"></div>
-        <span class="content">{{item.msg}}</span>
-      </div>
-      <img src="img/chat.jpg" class="userhd" ng-if="item.fromPerson != 1">
     </li>
-    <!-- <li class="item ichat">
-      <div class="chat-con">
-       <div class="arrow"></div>
-        <span class="content">测试</span>
-      </div>
-      <img src="img/chat.jpg" class="userhd">
-    </li>
-    <li class="item ichat">
-      <div class="chat-con">
-       <div class="arrow"></div>
-        <span class="content">测试</span>
-      </div>
-      <img src="img/chat.jpg" class="userhd">
-    </li>
-    <li class="item ichat">
-      <div class="chat-con">
-       <div class="arrow"></div>
-        <span class="content">测试</span>
-      </div>
-      <img src="img/chat.jpg" class="userhd">
-    </li>
-    <li class="item ichat">
-      <div class="chat-con">
-       <div class="arrow"></div>
-        <span class="content">测试</span>
-      </div>
-      <img src="img/chat.jpg" class="userhd">
-    </li>
-    <li class="item ichat">
-      <div class="chat-con">
-       <div class="arrow"></div>
-        <span class="content">测试</span>
-      </div>
-      <img src="img/chat.jpg" class="userhd">
-    </li>
-    <li class="item ichat">
-      <div class="chat-con">
-       <div class="arrow"></div>
-        <span class="content">测试</span>
-      </div>
-      <img src="img/chat.jpg" class="userhd">
-    </li>
-    <li class="item ichat">
-      <div class="chat-con">
-       <div class="arrow"></div>
-        <span class="content">测试</span>
-      </div>
-      <img src="img/chat.jpg" class="userhd">
-    </li>
-    <li class="item ichat">
-      <div class="chat-con">
-       <div class="arrow"></div>
-        <span class="content">测试</span>
-      </div>
-      <img src="img/chat.jpg" class="userhd">
-    </li> -->
   </ul>
 </ion-content>
  <!--  -->

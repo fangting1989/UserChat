@@ -34,4 +34,93 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .badge.badge-assertive {
   background-color: #D0021B; }
 
+/*chat page*/
+.chatpage {
+  background: #f7f7f7; }
+  .chatpage .list .item {
+    background: #f7f7f7;
+    border: none; }
+    .chatpage .list .item .userhd {
+      display: inline-block;
+      height: auto;
+      width: 12%;
+      padding: 3px; }
+    .chatpage .list .item .chat-con {
+      padding-top: 3px;
+      display: inline-block;
+      vertical-align: top;
+      width: 88%;
+      position: relative;
+      white-space: normal; }
+      .chatpage .list .item .chat-con .content {
+        display: inline-block;
+        line-height: 30px;
+        background: #3cb044;
+        padding: 0px 10px;
+        border-radius: 5px;
+        white-space: normal;
+        width: auto;
+        display: inline-block;
+        max-width: 100%;
+        text-align: left; }
+      .chatpage .list .item .chat-con .arrow {
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        left: -10px;
+        top: 10px;
+        border-left: 5px solid transparent;
+        border-right: 5px solid #3cb044;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent; }
+  .chatpage .list .ichat .chat-con {
+    text-align: right;
+    white-space: normal; }
+    .chatpage .list .ichat .chat-con .content {
+      border: 1px solid #dcdcdc;
+      border-radius: 5px;
+      background: #fff;
+      max-width: 100%; }
+      @media screen and (-webkit-min-device-pixel-ratio: 2) {
+        .chatpage .list .ichat .chat-con .content {
+          position: relative;
+          border: 0; }
+          .chatpage .list .ichat .chat-con .content:before {
+            content: "";
+            width: 200%;
+            height: 200%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid #dcdcdc;
+            -webkit-transform: scale(0.5);
+            -webkit-transform-origin: 0 0;
+            padding: 1px;
+            -webkit-box-sizing: border-box;
+            border-radius: 5px;
+            pointer-events: none; } }
+    .chatpage .list .ichat .chat-con .arrow {
+      left: auto;
+      right: -10px;
+      top: 10px;
+      border-left: 5px solid #dcdcdc;
+      border-right: 5px solid transparent; }
+      .chatpage .list .ichat .chat-con .arrow:after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        left: -6px;
+        top: -5px;
+        border-left: 5px solid #fff;
+        border-right: 5px solid transparent;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        z-index: 10; }
+
+.item-input-inset .selfile {
+  margin: 0px 10px 0px 0px; }
+
 /*# sourceMappingURL=style.css.map */

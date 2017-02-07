@@ -3,10 +3,39 @@ angular.module('starter.controllers', [])
 .controller('loginCtrl', function($scope,deepstreamservice) {
   	$scope.TitleName = "123"
 })
-.controller('chatCtrl', function($scope,chatservice,$stateParams,$ionicScrollDelegate,Upload,CommonServices) {
+.controller('chatCtrl', function($scope,deepstreamservice,$stateParams,$ionicScrollDelegate,Upload,CommonServices) {
 	$scope.TitleName = "联系方式"
   $scope.data={}
   $scope.chatarray = []
+  $scope.chatarray.push({fromPerson:1,chatType:'1',msg:'ceshiyixia'})
+  // var chatR = {}
+  // chatR.fromPerson = 1
+  // chatR.chatType = 1
+  // chatR.msg = 'ceshiyixia'
+  // $scope.chatarray.push(chatR)
+
+  var chatRecord = null;
+  deepstreamservice.init().then(function (ds) {
+    if (ds) {
+      chatRecord = ds.record.getRecord("wechat");
+      chatRecord.whenReady(function () {
+        console.log('record ready');
+        chatRecord.subscribe('firstname',function (info) {
+          console.log(info)
+          if(info.type == 'userclient'){
+            return;
+          }
+          $scope.chatarray.push({fromPerson:2,chatType:1,msg:info.data})
+          $scope.$apply();
+          $ionicScrollDelegate.scrollBottom(true);
+        })
+      });
+    }
+  })
+
+
+
+
     angular.extend($scope,{
         SendContent:function(){
             $ionicScrollDelegate.scrollBottom(true);
@@ -15,8 +44,9 @@ angular.module('starter.controllers', [])
               return
             }
             $scope.chatarray.push({fromPerson:"1",chatType:'1',msg:$scope.data.sendchat})
+            // chatservice.Init("abc",$scope.data.sendchat)
+            chatRecord.set("firstname", {type:'userclient',data:$scope.data.sendchat})
             $scope.data.sendchat = ''
-            chatservice.Init("abc",$scope.data.sendchat)
         },
         uploadFiles:function($files){
             CommonServices.toasterInfo("file uplad ...",'success')

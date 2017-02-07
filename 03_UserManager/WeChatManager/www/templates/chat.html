@@ -5,8 +5,31 @@
 
   <h1 class="title">{{TitleName}}</h1>
 </ion-header-bar>
-<ion-content class="has-header has-footer">
-	
+<ion-content class="has-header has-footer chatpage">
+	<ul class="list">
+    <!-- <li class="item">
+      <img src="img/chat.jpg" class="userhd">
+      <div class="chat-con">
+      <div class="arrow"></div>
+        <span class="content">测试内容</span>
+      </div>
+    </li>
+    <li class="item ichat">
+      <div class="chat-con">
+       <div class="arrow"></div>
+        <span class="content">测试</span>
+      </div>
+      <img src="img/chat.jpg" class="userhd">
+    </li> -->
+    <li class="item " ng-class="{'ichat':(item.fromPerson == 1)}" ng-repeat="item in chatarray">
+      <img src="img/chat.jpg" class="userhd" ng-if="item.fromPerson != 1">
+      <div class="chat-con">
+       <div class="arrow"></div>
+        <span class="content">{{item.msg}}</span>
+      </div>
+      <img src="img/chat.jpg" class="userhd" ng-if="item.fromPerson == 1">
+    </li>
+  </ul>
 </ion-content>
 
 <div class="bar bar-footer bar-balanced item-input-inset">

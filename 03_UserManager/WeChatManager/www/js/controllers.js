@@ -18,14 +18,33 @@ angular.module('starter.controllers', [])
 
   	$scope.BindData()
 })
-.controller('chatCtrl', function($scope,deepstreamservice,$stateParams,CommonServices,uuid2,chatservice) {
+.controller('chatCtrl', function($scope,deepstreamservice,$stateParams,CommonServices,uuid2,chatservice,$ionicScrollDelegate) {
 	$scope.TitleName = $stateParams.obj.mobile
   console.log($stateParams.obj.guid)
   $scope.data = {}
 
   $scope.chatarray = []
-  var chatData = {fromPerson:"1",chatType:'1',msg:'1231313131331331331'}
-  $scope.chatarray.push(chatData)
+  $scope.chatarray.push({fromPerson:"1",chatType:'1',msg:'1231313131331331331'})
+
+  var chatRecord = null;
+  deepstreamservice.init().then(function (ds) {
+    if (ds) {
+      chatRecord = ds.record.getRecord("wechat");
+      chatRecord.whenReady(function () {
+        console.log('record ready');
+          chatRecord.subscribe('firstname',function (info) {
+            console.log(info)
+            if(info.type == 'WeChatManager'){
+              return;
+            }
+            $scope.chatarray.push({fromPerson:"2",chatType:'1',msg:info.data})
+            $scope.$apply();
+            $ionicScrollDelegate.scrollBottom(true);
+          })
+      });
+    }
+  })
+
 
 	angular.extend($scope, {
     SendChatMessage:function(){
@@ -34,10 +53,13 @@ angular.module('starter.controllers', [])
         CommonServices.toasterInfo("对不起，输入的内容不能为空",'error')
         return
       }
-      chatservice.Init($stateParams.obj.guid).then(function(data){
-        $scope.chatarray.push({fromPerson:"1",chatType:'1',msg:data})
-      })
+      chatRecord.set("firstname", {type:'WeChatManager',data:$scope.data.sendchat})
+      // chatservice.Init($stateParams.obj.guid).then(function(data){
+      //   $scope.chatarray.push({fromPerson:"1",chatType:'1',msg:data})
+      // })
       $scope.chatarray.push({fromPerson:"1",chatType:'1',msg:$scope.data.sendchat})
+      $scope.data.sendchat = ''
+      $ionicScrollDelegate.scrollBottom(true);
     }
 	})
 })
