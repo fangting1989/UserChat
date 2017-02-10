@@ -1,4 +1,6 @@
 const DeepstreamServer = require('deepstream.io')
+const RedisMessageConnector = require('deepstream.io-msg-redis')
+const RedisCacheConnector = require('deepstream.io-cache-redis')
 const C = DeepstreamServer.constants
 /*
 The server can take
@@ -23,4 +25,37 @@ or a plugin which you want to reuse within your application
 // }])
 
 // start the server
+
+// server.set('messageConnector', new RedisMessageConnector({
+//   port: 6379,
+//   host: 'localhost'
+// }))
+var settings = {
+  port: 6379,
+  host: 'localhost'
+}
+
+var MessageConnector = new RedisMessageConnector( settings )
+// expect( RedisMessageConnector.isReady ).to.equal( false )
+MessageConnector.on( 'error', function(){
+	console.log("error message")
+} )
+MessageConnector.on( 'ready', function(){
+	console.log("ready message")
+	server.set('messageConnector',MessageConnector)
+} )
+
+
+// var cacheConnector = new RedisCacheConnector( settings )
+// cacheConnector.on( 'ready', function(){
+// 	console.log("ready cache")
+// 	server.set('cache',cacheConnector)
+// } )
+// cacheConnector.on( 'error', ( e ) => { console.log(e) } )
+
+
+
+console.log(RedisMessageConnector)
+
 server.start()
+
